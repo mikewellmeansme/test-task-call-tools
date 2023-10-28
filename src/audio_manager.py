@@ -15,7 +15,7 @@ class AudioManager:
         self._audio = AudioSegment.from_wav(path_to_wav)
 
     @logger
-    def change_speed(self, speed: float):
+    def change_speed(self, speed: float) -> None:
 
         # BUG: Питчит звук
 
@@ -27,11 +27,11 @@ class AudioManager:
 
     
     @logger
-    def change_volume(self, db_to_add: float):
+    def change_volume(self, db_to_add: float) -> None:
         self._audio = self._audio + db_to_add
     
     @logger
-    def export(self, path: str):
+    def export(self, path: str)  -> None:
         self._audio.export(path, format="wav")
 
     def __repr__(self) -> str:

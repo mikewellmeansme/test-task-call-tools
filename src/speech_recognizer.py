@@ -9,7 +9,7 @@ class SpeechRecognizer:
         self._model = whisper.load_model(model_name, **model_kwargs)
 
     @logger
-    def recognize(self, path_to_wav: str):
+    def recognize(self, path_to_wav: str) -> str:
         result = self._model.transcribe(path_to_wav)
         return result['text']
     
