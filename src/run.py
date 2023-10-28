@@ -15,7 +15,7 @@ def change_speed(path: str, speed: float):
 
     speed: rate
 
-    Example: change-speed audio/1.wav 1.5
+    Example: change-speed audio/en_01.wav -- 1.5
     """
     am = AudioManager(path)
     am.change_speed(speed)
@@ -35,7 +35,7 @@ def change_volume(path: str, volume: float):
 
     For the negative values use -- value
 
-    Example: change-volume audio/1.wav -- -20
+    Example: change-volume audio/en_01.wav -- -20
     """
     am = AudioManager(path)
     am.change_volume(volume)
@@ -47,6 +47,13 @@ def change_volume(path: str, volume: float):
 
 @app.command()
 def recognize(path: str):
+    """
+    Transcribe speech from WAV file using Whisper base model
+
+    path: path to the .WAV file
+
+    Example: recognize audio/en_01.wav
+    """
     sr = SpeechRecognizer('base')
     text = sr.recognize(path)
     print(text)
