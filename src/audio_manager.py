@@ -16,7 +16,10 @@ class AudioManager:
 
     @logger
     def change_speed(self, speed: float) -> None:
-
+        
+        if speed <= 0:
+            raise ValueError('Audio speed must be positive number!')
+        
         # BUG: Питчит звук
 
         temp_audio = self._audio._spawn(
@@ -25,13 +28,12 @@ class AudioManager:
         )
         self._audio = temp_audio.set_frame_rate(self._audio.frame_rate)
 
-    
     @logger
     def change_volume(self, db_to_add: float) -> None:
         self._audio = self._audio + db_to_add
     
     @logger
-    def export(self, path: str)  -> None:
+    def export(self, path: str) -> None:
         self._audio.export(path, format="wav")
 
     def __repr__(self) -> str:
